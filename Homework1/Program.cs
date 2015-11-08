@@ -18,7 +18,13 @@ namespace ConsoleApplication1
                 Console.WriteLine(i);
             }
 
-            Sort();
+            int leftElem = sortArray[0];
+            int rightElem = sortArray[7];
+
+            Console.WriteLine(leftElem);
+            Console.WriteLine(rightElem);
+
+            //Sort(int leftElem, int rightElem);
 
         }
 
@@ -32,24 +38,25 @@ namespace ConsoleApplication1
         //Если l вдруг становится больше r, то прерываем цикл
         //Повторяем рекурсивно, пока не дойдём до массива из 1 элемента
 
-        public void Sort(int b, int e)
-        {
-            int l = b, r = e;
-            int piv = arr[(l + r) / 2]; // Опорным элементом для примера возьмём средний
-            while (l <= r)
-            {
-                while (arr[l] < piv)
-                    l++;
-                while (arr[r] > piv)
-                    r--;
-                if (l <= r)
-                    swap(arr[l++], arr[r--]);
-            }
-            if (b < r)
-                qsort(b, r);
-            if (e > l)
-                qsort(l, e);
-        }    /* ----- end of function qsort ----- */
+        //public void Sort(int b, int e)
+        //{
+        //    int l = b, r = e;
+        //    int piv = arr[(l + r) / 2]; // Опорным элементом для примера возьмём средний
+        //    while (l <= r)
+        //    {
+        //        while (arr[l] < piv)
+        //            l++;
+        //        while (arr[r] > piv)
+        //            r--;
+        //        if (l <= r)
+        //            swap(arr[l++], arr[r--]);
+        //    }
+        //    if (b < r)
+        //        qsort(b, r);
+        //    if (e > l)
+        //        qsort(l, e);
+        //}   
+        /* ----- end of function qsort ----- */
 
 
 
