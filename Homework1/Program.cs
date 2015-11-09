@@ -10,32 +10,56 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            int[] sortArray = new int[8] { 2, 56, 33, 12, 48, 15, 70, 3 };
-
+            int[] sortArray = new int[9] { 2, 56, 33, 12, 48, 15, 70, 3, 54 };
 
             foreach (int i in sortArray)
             {
                 Console.WriteLine(i);
             }
 
-            int leftElem = sortArray[0];
-            int rightElem = sortArray[7];
+            int leftElem = sortArray.First();
+            int rightElem = sortArray.Last();
+            int midElem = (leftElem + rightElem) / 2;
+            int tempElem = 0;
 
+            Console.WriteLine("\n");
             Console.WriteLine(leftElem);
             Console.WriteLine(rightElem);
+            Console.WriteLine(midElem);
+            Console.WriteLine("\n");
+
+             while (leftElem <= rightElem)
+              {
+                while (leftElem < midElem)
+                {
+                    leftElem++;
+                }
+                while (rightElem > midElem)
+                {
+                    rightElem--;
+                }
+                if (leftElem < rightElem)
+                {
+                    tempElem = leftElem;
+                    leftElem = rightElem;
+                    rightElem = tempElem;
+                }
+
+                leftElem++;
+                rightElem--;
+
+                Console.WriteLine(leftElem);
+                Console.WriteLine(rightElem);
+                Console.WriteLine(tempElem);
+
+            }
+
+
 
             //Sort(int leftElem, int rightElem);
 
         }
 
-
-        //Выбираем опорный элемент
-        //Разбиваем массив на 3 части
-        //Создаём переменные l и r — индексы соответственно начала и конца рассматриваемого подмассива
-        //Увеличиваем l, пока l-й элемент меньше опорного
-        //Уменьшаем r, пока r-й элемент больше опорного
-        //Если l всё ещё меньше r, то меняем l-й и r-й элементы местами, инкрементируем l и декрементируем r
-        //Если l вдруг становится больше r, то прерываем цикл
         //Повторяем рекурсивно, пока не дойдём до массива из 1 элемента
 
         //public void Sort(int b, int e)
