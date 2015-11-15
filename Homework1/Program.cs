@@ -12,78 +12,56 @@ namespace ConsoleApplication1
         {
             int[] sortArray = new int[9] { 2, 56, 33, 12, 48, 15, 70, 3, 54 };
 
+            int lastElem = sortArray.Length - 1;
+
+            Sort(sortArray, 0, lastElem);
+
+
             foreach (int i in sortArray)
             {
                 Console.WriteLine(i);
             }
-
-            int leftElem = sortArray.First();
-            int rightElem = sortArray.Last();
-            int midElem = (leftElem + rightElem) / 2;
-            int tempElem = 0;
-
-            Console.WriteLine("\n");
-            Console.WriteLine(leftElem);
-            Console.WriteLine(rightElem);
-            Console.WriteLine(midElem);
-            Console.WriteLine("\n");
-
-             while (leftElem <= rightElem)
-              {
-                while (leftElem < midElem)
-                {
-                    leftElem++;
-                }
-                while (rightElem > midElem)
-                {
-                    rightElem--;
-                }
-                if (leftElem < rightElem)
-                {
-                    tempElem = leftElem;
-                    leftElem = rightElem;
-                    rightElem = tempElem;
-                }
-
-                leftElem++;
-                rightElem--;
-
-                Console.WriteLine(leftElem);
-                Console.WriteLine(rightElem);
-                Console.WriteLine(tempElem);
-
-            }
-
-
-
-            //Sort(int leftElem, int rightElem);
-
         }
 
-        //Повторяем рекурсивно, пока не дойдём до массива из 1 элемента
-
-        //public void Sort(int b, int e)
-        //{
-        //    int l = b, r = e;
-        //    int piv = arr[(l + r) / 2]; // Опорным элементом для примера возьмём средний
-        //    while (l <= r)
-        //    {
-        //        while (arr[l] < piv)
-        //            l++;
-        //        while (arr[r] > piv)
-        //            r--;
-        //        if (l <= r)
-        //            swap(arr[l++], arr[r--]);
-        //    }
-        //    if (b < r)
-        //        qsort(b, r);
-        //    if (e > l)
-        //        qsort(l, e);
-        //}   
-        /* ----- end of function qsort ----- */
 
 
+        static void Sort(int[] arr, int first, int last)
+        {
+            int midElem = arr[(last - first) / 2 + first];
+            int temp;
+            int left = first;
+            int right = last;
 
+            while (left <= right)
+            {
+                while (arr[left] < midElem && left <= last)
+                {
+                    left++;
+                }
+                while (arr[right] > midElem && right >= first)
+                {
+                    right--;
+                }
+                if (left <= right)
+                {
+                    temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                    left++;
+                    right--;
+                }
+            }
 
+            //рекурсивный вызов
+            if (right > first)
+            {
+                Sort(arr, first, right);
+            }
+            if (left < last)
+            {
+                Sort(arr, left, last);
+            }
+
+        }
     }
 }
